@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://vlxpbjdahh7m"]
+
+[ext_resource type="Script" path="res://Scripts/monster_follower.gd" id="1_rjyqo"]
+[ext_resource type="Script" path="res://Scripts/Vission_area.gd" id="2_o8eyv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bxtm"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gr4ju"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efblq"]
+albedo_color = Color(0.502816, 0.530025, 0.50711, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4hqil"]
+size = Vector3(0.5, 0.58, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1qewk"]
+
+[node name="Alien" type="CharacterBody3D" groups=["noise_listener"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_rjyqo")
+speed = 3.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_3bxtm")
+mesh = SubResource("CapsuleMesh_gr4ju")
+
+[node name="sorta_face" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0427999, 0, -0.999084, 0, 1, 0, 0.999084, 0, 0.0427999, -0.0115045, 0.448514, -0.306205)
+material_override = SubResource("StandardMaterial3D_efblq")
+mesh = SubResource("BoxMesh_4hqil")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_1qewk")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+height = 1.5
+radius = 1.0
+debug_enabled = true
+
+[node name="Vission_area" type="Node3D" parent="." node_paths=PackedStringArray("parent")]
+script = ExtResource("2_o8eyv")
+parent = NodePath("..")
+
+[node name="RayCast3D" type="RayCast3D" parent="Vission_area"]
+transform = Transform3D(1, 0, 0, 0, 0.99985, -0.0172954, 0, 0.0172954, 0.99985, -0.0817828, 0.810395, -0.516692)
+target_position = Vector3(0, 0, -40)
+collision_mask = 6
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, 0)
+font_size = 40
+
+[node name="attack_cool_down" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="bodies_count" from="Vission_area" to="." method="_on_vission_area_bodies_count"]
+[connection signal="timeout" from="attack_cool_down" to="." method="_on_attack_cool_down_timeout"]

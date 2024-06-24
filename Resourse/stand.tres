@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="movement_state" load_steps=2 format=3 uid="uid://dix3vjsiu816s"]
+
+[ext_resource type="Script" path="res://Scripts/states/player_movement_states.gd" id="1_p7lbn"]
+
+[resource]
+script = ExtResource("1_p7lbn")
+id = 0
+speed = 0.0
+noise_radius = 0.0

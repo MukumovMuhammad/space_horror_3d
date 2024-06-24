@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=3 uid="uid://whi5wlllbfu0"]
+
+[ext_resource type="Texture2D" uid="uid://c2xnw1c20lfo2" path="res://Assets/ground_texture.jpg" id="1_52ri1"]
+[ext_resource type="PackedScene" uid="uid://dxltoqt1rsb2r" path="res://Scenes/player.tscn" id="2_f5gfo"]
+[ext_resource type="PackedScene" uid="uid://vlxpbjdahh7m" path="res://Scenes/noise_detecotr_box.tscn" id="3_cyji4"]
+[ext_resource type="PackedScene" uid="uid://c8c1kaqmfend" path="res://Scenes/ui.tscn" id="3_e8hoh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1t3ev"]
+sky_top_color = Color(0.584369, 0.372656, 0.327207, 1)
+sky_horizon_color = Color(0.696092, 0.635414, 0.615052, 1)
+sky_energy_multiplier = 0.9
+ground_horizon_color = Color(0.696092, 0.635414, 0.615052, 1)
+
+[sub_resource type="Sky" id="Sky_rdn0l"]
+sky_material = SubResource("ProceduralSkyMaterial_1t3ev")
+
+[sub_resource type="Environment" id="Environment_cyknb"]
+background_mode = 2
+sky = SubResource("Sky_rdn0l")
+tonemap_mode = 2
+glow_enabled = true
+fog_light_color = Color(0.541026, 0.413695, 0.369931, 1)
+fog_density = 0.2
+volumetric_fog_density = 0.5
+volumetric_fog_albedo = Color(0.363519, 0.506036, 0.296335, 1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_fvidt"]
+vertices = PackedVector3Array(-5.25, 1, -1, -5.25, 1, -0.25, -2.5, 1, -0.5, -6, 1, -1.75, -5.25, 1, -1, -2.5, 1, -0.5, -2.5, 1, -6, -1.75, 1, -6.75, -0.25, 1, -6.75, -0.5, 1, -149, -9.75, 1, -1.75, -6, 1, -1.75, -2.5, 1, -6, -9.75, 1, -1.75, -2.5, 1, -6, -1.75, 1, -6.75, -0.5, 1, -149, -149, 1, -149, -149, 1, 1, -149, 1, 1, -10.5, 1, 1, -10.5, 1, -1, -149, 1, 1, -10.5, 1, -1, -9.75, 1, -1.75, 4.25, 1, -7, 4.25, 1, -149, -0.5, 1, -149, -0.25, 1, -6.75, 4.25, 1, -149, 4.25, 1, -7, 5.25, 1, -5.75, 149, 1, -5.75, 149, 1, -149, 2.75, 1.75, -4.25, 2.25, 2, -5, -0.5, 2.25, -4.75, -0.5, 2.25, -1, 4.5, 1, -1.5, 2, 2, -1.25, 1.47501, 2.25, -3.02499, 5.25, 1, -0.75, 5.25, 1, 0, 149, 1, 0, 4.5, 1, -1.5, 5.25, 1, -0.75, 149, 1, 0, 149, 1, -5.75, 5.25, 1, -5, 4.5, 1, -4.25, 4.5, 1, -4.25, 2.75, 1.75, -4.25, 4.5, 1, -1.5, 149, 1, -5.75, 5.25, 1, -5.75, 5.25, 1, -5, -1, 1, 2.25, -0.25, 1, 2.25, 0, 1, 1, -1.75, 1, 1, -6, 1, 6, -8, 1, 6, -8, 1, 149, -1.75, 1, 3, -1, 1, 2.25, -1.75, 1, 1, -2.5, 1, 0.25, -2.5, 1, 0.25, -2.5, 1, -0.5, -5.25, 1, -0.25, -1, 1, 5.5, -1.75, 1, 4.75, -5.25, 1, 5.25, -6, 1, 6, -1.75, 1, 4.75, -1.75, 1, 3, -2.5, 1, 0.25, -5.25, 1, -0.25, -5.25, 1, 5.25, -0.25, 1, 5.5, -1, 1, 5.5, -6, 1, 6, -8, 1, 149, -0.25, 1, 149, 0, 1, 1, -0.25, 1, 2.25, 0.5, 1, 2.25, 0, 1, 1, 0.5, 1, 2.25, 1.5, 1, 3.25, 4.5, 1, 1.25, 149, 1, 0, 4.5, 1, 1.25, 1.5, 1, 4.5, -0.25, 1, 149, 149, 1, 149, 4.5, 1, 1.25, 1.5, 1, 3.25, 1.5, 1, 4.5, 0.5, 1, 5.5, -0.25, 1, 5.5, -0.25, 1, 149, 149, 1, 0, 5.25, 1, 0, 4.5, 1, 1.25, 1.5, 1, 4.5, 0.5, 1, 5.5, -0.25, 1, 149, -8.5, 3.25, 0.25, -8.5, 3.25, 4, -7.5, 3.25, 4, -7.5, 3.25, 0.25, -8.25, 1, 0.5, -8.25, 1, 3.75, -7.5, 1, 3.75, -7.5, 1, 0.5, -149, 1, 3.25, -10.5, 1, 3.25, -10.5, 1, 1, -149, 1, 1, -10.5, 1, 5.25, -10.5, 1, 3.25, -149, 1, 3.25, -9.75, 1, 6, -10.5, 1, 5.25, -149, 1, 3.25, -149, 1, 149, -8, 1, 149, -8, 1, 149, -8, 1, 6, -9.75, 1, 6)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(9, 8, 7), PackedInt32Array(12, 11, 10), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 18), PackedInt32Array(15, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(21, 20, 19), PackedInt32Array(24, 23, 22), PackedInt32Array(25, 28, 26), PackedInt32Array(26, 28, 27), PackedInt32Array(30, 29, 31), PackedInt32Array(31, 29, 32), PackedInt32Array(32, 29, 33), PackedInt32Array(39, 40, 38), PackedInt32Array(38, 40, 34), PackedInt32Array(34, 40, 35), PackedInt32Array(35, 40, 36), PackedInt32Array(36, 40, 37), PackedInt32Array(37, 40, 39), PackedInt32Array(43, 42, 41), PackedInt32Array(49, 48, 44), PackedInt32Array(44, 48, 45), PackedInt32Array(45, 48, 47), PackedInt32Array(45, 47, 46), PackedInt32Array(52, 51, 50), PackedInt32Array(55, 54, 53), PackedInt32Array(57, 56, 58), PackedInt32Array(58, 56, 59), PackedInt32Array(62, 61, 60), PackedInt32Array(64, 63, 65), PackedInt32Array(65, 63, 66), PackedInt32Array(69, 68, 67), PackedInt32Array(71, 70, 72), PackedInt32Array(72, 70, 73), PackedInt32Array(75, 74, 76), PackedInt32Array(76, 74, 77), PackedInt32Array(77, 74, 78), PackedInt32Array(80, 79, 81), PackedInt32Array(81, 79, 83), PackedInt32Array(81, 83, 82), PackedInt32Array(86, 85, 84), PackedInt32Array(88, 87, 89), PackedInt32Array(89, 87, 90), PackedInt32Array(92, 91, 93), PackedInt32Array(93, 91, 94), PackedInt32Array(94, 91, 95), PackedInt32Array(98, 97, 96), PackedInt32Array(101, 100, 99), PackedInt32Array(104, 103, 102), PackedInt32Array(107, 106, 105), PackedInt32Array(111, 110, 108), PackedInt32Array(108, 110, 109), PackedInt32Array(115, 114, 112), PackedInt32Array(112, 114, 113), PackedInt32Array(119, 118, 116), PackedInt32Array(116, 118, 117), PackedInt32Array(122, 121, 120), PackedInt32Array(124, 123, 125), PackedInt32Array(125, 123, 126), PackedInt32Array(126, 123, 127), PackedInt32Array(130, 129, 128)]
+agent_radius = 1.0
+filter_low_hanging_obstacles = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0g6hd"]
+albedo_texture = ExtResource("1_52ri1")
+uv1_scale = Vector3(0.825, 0.825, 0.825)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.901251
+
+[node name="Test_Place" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cyknb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.273959, 0.766056, -0.581468, 0, 0.604599, 0.79653, 0.961741, -0.218217, 0.165635, 0, 0, 0)
+light_color = Color(0.628843, 0.578203, 0.549841, 1)
+shadow_enabled = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00510263, -0.0152953, 0.00481772)
+navigation_mesh = SubResource("NavigationMesh_fvidt")
+
+[node name="ground" type="CSGBox3D" parent="NavigationRegion3D"]
+material_override = SubResource("StandardMaterial3D_0g6hd")
+use_collision = true
+size = Vector3(300, 1, 300)
+
+[node name="Player" parent="NavigationRegion3D" instance=ExtResource("2_f5gfo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98625, 4.17896, -14.4924)
+
+[node name="UI" parent="NavigationRegion3D/Player" instance=ExtResource("3_e8hoh")]
+
+[node name="Alien" parent="NavigationRegion3D" node_paths=PackedStringArray("player") instance=ExtResource("3_cyji4")]
+transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -3, 2, 3)
+main_pos = Vector3(-3, 2, 3)
+player = NodePath("../Player")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0415039, 1.10222, -2.86235)
+use_collision = true
+collision_layer = 2
+collision_mask = 7
+size = Vector3(2.91699, 1.63678, 5.71082)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9585, 1.54855, 2.04781)
+use_collision = true
+collision_layer = 2
+collision_mask = 7
+size = Vector3(2.91699, 2.74619, 5.53113)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(0.882964, 0.469441, 0, -0.469441, 0.882964, 0, 0, 0, 1, 2.62837, 0.752908, -2.88115)
+use_collision = true
+collision_layer = 2
+collision_mask = 7
+size = Vector3(3.08386, 1, 5)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83036, 0.953652, -0.211511)
+use_collision = true
+collision_layer = 2
+collision_mask = 7
+size = Vector3(2.64566, 0.898407, 0.5)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8525, 1.03469, -5.59957)
+use_collision = true
+collision_layer = 2
+collision_mask = 7
+size = Vector3(2.68994, 1.06049, 0.5)
+
+[connection signal="enemies_data" from="NavigationRegion3D/Alien" to="NavigationRegion3D/Player/UI" method="_on_alien_enemies_data"]

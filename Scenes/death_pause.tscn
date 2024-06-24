@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3eaxjmmf8qe0"]
+
+[ext_resource type="Script" path="res://Scripts/control(UI_HUD)/death_pause.gd" id="1_2o7mx"]
+
+[node name="death_pause" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2o7mx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="pause" type="PanelContainer" parent="CanvasLayer"]
+self_modulate = Color(0.27451, 0.27451, 0.27451, 0.603922)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="restart_lvl" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.425
+anchor_top = 0.062
+anchor_right = 0.58
+anchor_bottom = 0.173
+offset_left = 0.399994
+offset_top = -0.176003
+offset_right = -0.160034
+offset_bottom = -0.104004
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Try again
+"
+
+[node name="exit" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.425
+anchor_top = 0.443
+anchor_right = 0.58
+anchor_bottom = 0.554
+offset_left = 0.399994
+offset_top = -0.0640259
+offset_right = -0.160034
+offset_bottom = 0.00799561
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Exit to menu"
+
+[connection signal="pressed" from="CanvasLayer/restart_lvl" to="." method="_on_restart_lvl_pressed"]
+[connection signal="pressed" from="CanvasLayer/exit" to="." method="_on_exit_pressed"]
