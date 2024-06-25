@@ -33,6 +33,7 @@ func _physics_process(delta):
 
 """
 
+
 func _process(delta):
 	ray.look_at(parent.player.global_position)
 	if is_in_range():

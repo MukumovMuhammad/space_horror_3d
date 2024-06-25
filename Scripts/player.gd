@@ -41,7 +41,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	pre_cur = cur_state
 	pre_dir = Vector3.ZERO
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	emit_signal("set_movement_state", states["stand"])
 
 

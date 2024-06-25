@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/control(UI_HUD)/pause_menu.gd" id="1_qi34n"]
 
 [node name="pause_menu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,9 +13,8 @@ grow_vertical = 2
 script = ExtResource("1_qi34n")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
-[node name="pause" type="PanelContainer" parent="CanvasLayer"]
+[node name="pause_panel" type="Panel" parent="CanvasLayer"]
 self_modulate = Color(0.27451, 0.27451, 0.27451, 0.603922)
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,34 +22,43 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="continue" type="Button" parent="CanvasLayer"]
+[node name="continue" type="Button" parent="CanvasLayer/pause_panel"]
+layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.425
-anchor_top = 0.062
-anchor_right = 0.58
-anchor_bottom = 0.173
-offset_left = 0.399994
-offset_top = -0.176003
-offset_right = -0.160034
-offset_bottom = -0.104004
+anchor_left = 0.424
+anchor_top = 0.042
+anchor_right = 0.596
+anchor_bottom = 0.158
+offset_left = 0.551971
+offset_top = -0.216002
+offset_right = 3.40796
+offset_bottom = 8.616
 grow_horizontal = 2
+scale = Vector2(0.980894, 0.898092)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
 text = "Continue
 "
 
-[node name="exit" type="Button" parent="CanvasLayer"]
+[node name="exit" type="Button" parent="CanvasLayer/pause_panel"]
+layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.425
-anchor_top = 0.443
-anchor_right = 0.58
-anchor_bottom = 0.554
-offset_left = 0.399994
-offset_top = -0.0640259
-offset_right = -0.160034
-offset_bottom = 0.00799561
+anchor_left = 0.406
+anchor_top = 0.841
+anchor_right = 0.622
+anchor_bottom = 0.937
+offset_left = 0.287964
+offset_top = 0.0319824
+offset_right = -0.544067
+offset_bottom = -0.176025
 grow_horizontal = 2
+grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
 text = "exit to menu
 "
+
+[connection signal="pressed" from="CanvasLayer/pause_panel/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/pause_panel/exit" to="." method="_on_exit_pressed"]
