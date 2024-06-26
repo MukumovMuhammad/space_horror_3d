@@ -1,6 +1,6 @@
 extends Control
 
-#lets think again that here is written something
+#Ok now i am pushing with my account ?
 var pause : bool = false
 
 @onready var pause_panel = $CanvasLayer/pause_panel
