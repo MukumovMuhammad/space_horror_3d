@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 signal enemies_data(data : String)
 @onready var attack_cooldown_timer : Timer = $attack_cool_down
+@export var attack_demage : int = 10
 var noise_pos : Vector3
 @export var speed = 5.0
 var see  : bool = false
@@ -86,5 +87,5 @@ func _on_vission_area_bodies_count(bodies):
 
 func _on_attack_cool_down_timeout():
 	if global_position.distance_to(player.global_position) < 2.0:
-		player.take_damage(50)
+		player.take_damage(attack_demage)
 	attack = false
