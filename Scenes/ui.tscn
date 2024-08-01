@@ -12,6 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_305t6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="enemy_info" type="Label" parent="CanvasLayer"]
 offset_right = 285.0

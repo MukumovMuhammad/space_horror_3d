@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://1p2egnty20pw"]
+
+[ext_resource type="Script" path="res://Scripts/petrol_can.gd" id="1_5jrve"]
+[ext_resource type="PackedScene" uid="uid://cv0ymgx6ftnyh" path="res://Scenes/obj_equitble.tscn" id="2_7rlt6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pl5ry"]
+albedo_color = Color(0.686874, 0.223012, 0.291786, 1)
+roughness = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_yegpg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0c3gg"]
+albedo_color = Color(0.798487, 0.535385, 0.491789, 1)
+roughness = 0.35
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0m7ip"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gg8fk"]
+size = Vector3(1.2, 1.2, 0.7)
+
+[node name="petrol_can" type="Node3D"]
+script = ExtResource("1_5jrve")
+
+[node name="body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.389299, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_pl5ry")
+mesh = SubResource("BoxMesh_yegpg")
+
+[node name="head" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.237802, 0, 0, 0, 0.126684, 0, 0, 0, 0.179149, 0.324151, 0.508038, 0)
+material_override = SubResource("StandardMaterial3D_0c3gg")
+mesh = SubResource("CylinderMesh_0m7ip")
+
+[node name="obj_equitble" parent="." node_paths=PackedStringArray("parent") groups=["equipment", "has_info"] instance=ExtResource("2_7rlt6")]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+parent = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="obj_equitble"]
+shape = SubResource("BoxShape3D_gg8fk")

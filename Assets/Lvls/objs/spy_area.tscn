@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://brci1twlbn5wb"]
+
+[ext_resource type="Script" path="res://Scripts/lvl_objs/SpyArea.gd" id="1_fok66"]
+
+[node name="SpyArea" type="Area3D" groups=["has_info", "spying_spot"]]
+collision_layer = 2
+script = ExtResource("1_fok66")

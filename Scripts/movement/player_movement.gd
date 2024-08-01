@@ -1,11 +1,17 @@
 extends Node
 var lerp_speed := 3.0
 @export var Player : CharacterBody3D
-# Called when the node enters the scene tree for the first time.
+
 @onready var state : movement_state = movement_state.new()
 @onready var dir : Vector3 = Vector3.ZERO
+@onready var Player_vel = Vector3.ZERO
+@export var can_move : bool = true
+var is_spying : bool = false
+var can_get_dir : bool = true # this var is used for not getting new dir from player. So as it could still move only from it's previous dir. Like in spying
 
-
+#for spying
+var spy_pos : Vector3
+var spy_cam_rot : Vector3
 #fov
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
@@ -15,6 +21,7 @@ const FOV_CHANGE = 1.5
 @onready var neck : Node3D = $"../head/neck"
 @onready var Camera : Camera3D = $"../head/neck/Camera3D"
 
+
 var sensvity = 0.25
 
 enum states {
@@ -23,8 +30,7 @@ enum states {
 	WALK,
 	RUN
 }
-func _ready():
-	state.speed = 10.0
+
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -35,7 +41,6 @@ func _input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	
 	if state.id == states.STAND:
 		if Input.is_action_pressed("right_look"):
 			neck.position.x = lerp(neck.position.x, 1.0, lerp_speed * delta)
@@ -51,8 +56,8 @@ func _physics_process(delta):
 		neck.rotation.z = lerp_angle(neck.rotation.z, deg_to_rad(0), lerp_speed * delta)
 			
 
-	Player.velocity.x = lerp(dir.x, dir.x * state.speed, lerp_speed * delta)
-	Player.velocity.z = lerp(dir.z, dir.z * state.speed, lerp_speed * delta)
+	Player_vel.x = lerp(dir.x, dir.x * state.speed, lerp_speed * delta)
+	Player_vel.z = lerp(dir.z, dir.z * state.speed, lerp_speed * delta)
 	
 	
 	#camera FOV
@@ -60,6 +65,16 @@ func _physics_process(delta):
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clambed
 	Camera.fov = lerp(Camera.fov, target_fov, lerp_speed * delta)
 	
+	if is_spying:
+		spying(delta)
+	else:
+		#Camera.position.y = 0
+		pass
+	
+	if !can_move:
+		Player_vel = Vector3.ZERO
+	
+	Player.velocity = Player_vel
 	Player.move_and_slide()
 
 
@@ -71,5 +86,27 @@ func _on_player_set_movement_state(player_state : movement_state):
 
 # Recieving the player's direction 
 func _on_player_set_direction(direction):
-	dir = direction
+	if can_get_dir:
+		dir = direction
 	#print("The direction is ", dir)
+
+
+func spying(_delta):
+	if Player.global_position.distance_to(spy_pos) < 1.0:
+		print("We hit the place")
+		Player_vel = Vector3.ZERO
+		head.global_rotation.y = spy_cam_rot.y
+		head.global_rotation.z = spy_cam_rot.z
+		neck.position.x = rad_to_deg(spy_cam_rot.x)
+	else:
+		neck.look_at(spy_pos)
+		neck.rotation.x = 0
+		Player_vel.x = lerp(dir.x, dir.x * Player.states["walk"].speed, lerp_speed * _delta)
+		Player_vel.z = lerp(dir.z, dir.z * Player.states["walk"].speed, lerp_speed * _delta)
+
+func start_spy(_spy_pos : Vector3, _cam_rot : Vector3):
+	spy_pos = _spy_pos
+	spy_cam_rot = _cam_rot
+	can_get_dir = false
+	is_spying = true
+	

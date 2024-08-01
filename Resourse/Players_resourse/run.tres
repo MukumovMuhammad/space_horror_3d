@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="movement_state" load_steps=2 format=3 uid="uid://bvh5dhxjlcpp6"]
+
+[ext_resource type="Script" path="res://Scripts/states/player_movement_states.gd" id="1_vga3h"]
+
+[resource]
+script = ExtResource("1_vga3h")
+id = 3
+speed = 50.0
+noise_radius = 20.0

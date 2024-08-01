@@ -4,8 +4,7 @@ signal set_movement_state(state : movement_state)
 signal set_direction(dir : Vector3)
 signal player_died
 @export var movement : Node
-
-
+@export var Camera_Subs : Array
 @export var death_ui : PackedScene
 
 @export_category("camera bob")
@@ -18,18 +17,19 @@ var can_bob : int  = 1
 @export_category("movement_states")
 @export var states : Dictionary
 
+var is_spying : bool = false
+
 
 #const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 # lerp vars
 var lerp_speed := 5.0
 
+
 @onready var cur_state := "stand"
 # Camera vars
 @onready var head : Node3D = $head
 @onready var Camera : Camera3D = $head/neck/Camera3D
-
-
 
 
 # Charasteristic vars
@@ -38,17 +38,16 @@ var pre_dir : Vector3
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+
 func _ready():
 	pre_cur = cur_state
 	pre_dir = Vector3.ZERO
 	emit_signal("set_movement_state", states["stand"])
 
 
-
-
 func _physics_process(delta):
 	cur_state = "stand"
-	
+
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -66,6 +65,8 @@ func _physics_process(delta):
 	
 	var direction = (head.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
+		if is_spying:
+			pass
 		cur_state = "walk"
 		emit_signal("set_direction", direction)
 		if Input.is_action_pressed("shift"):
@@ -111,3 +112,11 @@ func death():
 	player_died.emit()
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	get_tree().paused = true
+
+
+func spy_corner(_spy_pos : Vector3, _spy_rot : Vector3):
+	$head/neck.look_at(_spy_pos)
+	$head/neck.rotation.y = 0
+	var direction = (head.global_basis * Vector3(0, 0, -1)).normalized()
+	emit_signal("set_direction", direction)
+	movement.start_spy(_spy_pos, _spy_rot)

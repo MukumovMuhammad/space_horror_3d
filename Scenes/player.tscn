@@ -1,15 +1,20 @@
-[gd_scene load_steps=19 format=3 uid="uid://dxltoqt1rsb2r"]
+[gd_scene load_steps=25 format=3 uid="uid://dxltoqt1rsb2r"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_hybay"]
-[ext_resource type="Resource" uid="uid://dix3vjsiu816s" path="res://Resourse/stand.tres" id="2_hqdk8"]
-[ext_resource type="Resource" uid="uid://w0im2vt0hc0q" path="res://Resourse/walk.tres" id="3_uhy2w"]
-[ext_resource type="Resource" uid="uid://dgscwtekjxqle" path="res://Resourse/crouch.tres" id="4_k8tvp"]
-[ext_resource type="Resource" uid="uid://bvh5dhxjlcpp6" path="res://Resourse/run.tres" id="5_5epif"]
+[ext_resource type="Resource" uid="uid://dgscwtekjxqle" path="res://Resourse/Players_resourse/crouch.tres" id="3_ocjjb"]
+[ext_resource type="Resource" uid="uid://bvh5dhxjlcpp6" path="res://Resourse/Players_resourse/run.tres" id="4_8bb64"]
+[ext_resource type="Resource" uid="uid://dix3vjsiu816s" path="res://Resourse/Players_resourse/stand.tres" id="5_dwt1k"]
 [ext_resource type="Script" path="res://Scripts/movement/player_movement.gd" id="5_tl4uw"]
 [ext_resource type="PackedScene" uid="uid://hp3j6y5fvilp" path="res://Scenes/health_component.tscn" id="6_27hf7"]
+[ext_resource type="Resource" uid="uid://w0im2vt0hc0q" path="res://Resourse/Players_resourse/walk.tres" id="6_anv2s"]
 [ext_resource type="Script" path="res://Scripts/noise_area.gd" id="7_sess5"]
+[ext_resource type="Script" path="res://Scripts/Obj_detector.gd" id="8_0rq2v"]
 [ext_resource type="Script" path="res://Scripts/control(UI_HUD)/HUD_Players.gd" id="9_dc0lc"]
+[ext_resource type="Script" path="res://Scripts/hand_objs.gd" id="9_ev88g"]
+[ext_resource type="PackedScene" uid="uid://cvii620md4st" path="res://Scenes/Player_Obj/camera_tab.tscn" id="9_tydlp"]
+[ext_resource type="PackedScene" uid="uid://dlp1ydo0v3oke" path="res://Scenes/Player_Obj/flesh_light.tscn" id="10_4gev7"]
 [ext_resource type="PackedScene" uid="uid://b3eaxjmmf8qe0" path="res://Scenes/death_pause.tscn" id="10_6pgdm"]
+[ext_resource type="Texture2D" uid="uid://coi8is6sndx66" path="res://Assets/HUD/crosshair/crosshair161.png" id="11_82ty5"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_x85kv"]
 
@@ -36,6 +41,8 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6yda6"]
 
 [sub_resource type="Animation" id="Animation_sydw8"]
 length = 0.001
@@ -101,14 +108,15 @@ _data = {
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("movement") groups=["Player"]]
 collision_layer = 4
 collision_mask = 7
+floor_max_angle = 1.0472
 script = ExtResource("1_hybay")
 movement = NodePath("movement")
 death_ui = ExtResource("10_6pgdm")
 states = {
-"crouch": ExtResource("4_k8tvp"),
-"run": ExtResource("5_5epif"),
-"stand": ExtResource("2_hqdk8"),
-"walk": ExtResource("3_uhy2w")
+"crouch": ExtResource("3_ocjjb"),
+"run": ExtResource("4_8bb64"),
+"stand": ExtResource("5_dwt1k"),
+"walk": ExtResource("6_anv2s")
 }
 
 [node name="movement" type="Node" parent="." node_paths=PackedStringArray("Player")]
@@ -120,7 +128,6 @@ visible = false
 mesh = SubResource("CapsuleMesh_x85kv")
 
 [node name="colli" type="CollisionShape3D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape3D_iehgv")
 
 [node name="head" type="Node3D" parent="."]
@@ -129,6 +136,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.654015, 0)
 [node name="neck" type="Node3D" parent="head"]
 
 [node name="Camera3D" type="Camera3D" parent="head/neck"]
+
+[node name="Detector" type="RayCast3D" parent="head/neck/Camera3D"]
+target_position = Vector3(0, 0, -2)
+collision_mask = 10
+collide_with_areas = true
+script = ExtResource("8_0rq2v")
+
+[node name="obj_place" type="Marker3D" parent="head/neck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, -1)
+
+[node name="hand_objs" type="Node3D" parent="head/neck"]
+script = ExtResource("9_ev88g")
+
+[node name="Camera_Tab" parent="head/neck/hand_objs" instance=ExtResource("9_tydlp")]
+transform = Transform3D(0.999988, 0, -0.004852, 0, 1, 0, 0.004852, 0, 0.999988, 0, -0.488476, -0.816532)
+visible = true
+
+[node name="FleshLight" parent="head/neck/hand_objs" instance=ExtResource("10_4gev7")]
 
 [node name="noise_area" type="Area3D" parent="."]
 collision_mask = 3
@@ -183,6 +208,69 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.952941, 0, 0, 0)
+
+[node name="equipment_mini_info" type="Label" parent="HUD/CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.466
+anchor_top = 0.523
+anchor_right = 0.543
+anchor_bottom = 0.559
+offset_left = 0.167969
+offset_top = 0.0960083
+offset_right = 0.463989
+offset_bottom = -0.231995
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HUD/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_82ty5")
+
+[node name="petrol_progress" type="ProgressBar" parent="HUD/CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.734
+anchor_top = 0.915
+anchor_right = 0.99
+anchor_bottom = 0.961
+offset_left = 0.431946
+offset_top = 0.0799561
+offset_right = 0.519897
+offset_bottom = 0.271973
+grow_horizontal = 0
+grow_vertical = 0
+value = 0.31
+
+[node name="CameraTab" type="TextureRect" parent="HUD/CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_6yda6")
+
+[node name="Label" type="Label" parent="HUD/CanvasLayer/CameraTab"]
+visible = false
+layout_mode = 0
+offset_left = 40.0
+offset_top = 564.0
+offset_right = 192.0
+offset_bottom = 613.0
+text = "space -  for switch
+Tab - for truning off"
 
 [node name="health_component" parent="." instance=ExtResource("6_27hf7")]
 

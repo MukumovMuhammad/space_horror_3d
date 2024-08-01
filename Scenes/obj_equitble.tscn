@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv0ymgx6ftnyh"]
+
+[ext_resource type="Script" path="res://Scripts/obj_equitble.gd" id="1_gevru"]
+
+[node name="obj_equitble" type="Area3D"]
+script = ExtResource("1_gevru")

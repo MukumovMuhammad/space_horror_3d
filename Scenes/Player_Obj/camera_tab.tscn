@@ -1,0 +1,107 @@
+[gd_scene load_steps=9 format=3 uid="uid://cvii620md4st"]
+
+[ext_resource type="Script" path="res://Scripts/camera_tab.gd" id="1_1eh6n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5m00"]
+albedo_color = Color(0.705789, 0.58988, 0.468525, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hgygk"]
+size = Vector3(0.4, 0.3, 0.1)
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_k7ctt"]
+radius = 0.05
+radial_steps = 5
+section_length = 0.05
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_4l6ow"]
+radius = 0.02
+section_length = 0.02
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ccnc5"]
+
+[sub_resource type="Animation" id="Animation_itxve"]
+resource_name = "getting"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("screen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.295054, -0.46727, 0.0247302), Vector3(-0.295054, -0.196253, -0.362563), Vector3(-0.1229, -0.101104, -0.091095)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("screen:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.606643, 0.571008, 0.0504086), Vector3(-0.261799, 0.485202, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.01051),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j4w4p"]
+_data = {
+"getting": SubResource("Animation_itxve")
+}
+
+[node name="Camera_Tab" type="Node3D"]
+visible = false
+script = ExtResource("1_1eh6n")
+
+[node name="screen" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.49999, 0, 0, 0, 1.5, -0.295054, -0.46727, 0.0247302)
+material_override = SubResource("StandardMaterial3D_y5m00")
+mesh = SubResource("BoxMesh_hgygk")
+
+[node name="left_handle" type="MeshInstance3D" parent="screen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.281657, 0, 0)
+mesh = SubResource("TubeTrailMesh_k7ctt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="screen/left_handle"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.063574, 0.098619, 0)
+mesh = SubResource("TubeTrailMesh_4l6ow")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="screen/left_handle"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.063574, -0.098967, 0)
+mesh = SubResource("TubeTrailMesh_4l6ow")
+
+[node name="right_handle2" type="MeshInstance3D" parent="screen"]
+transform = Transform3D(-1, -8.9407e-08, 0, 8.9407e-08, -1, 0, -2.98023e-08, 0, 1, 0.288908, -7.45058e-09, 0)
+mesh = SubResource("TubeTrailMesh_k7ctt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="screen/right_handle2"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.063574, 0.098619, 0)
+mesh = SubResource("TubeTrailMesh_4l6ow")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="screen/right_handle2"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.063574, -0.0957592, 0)
+mesh = SubResource("TubeTrailMesh_4l6ow")
+
+[node name="Sprite3D" type="Sprite3D" parent="screen"]
+transform = Transform3D(0.995946, -0.0899547, 0, 0.0899547, 0.995946, 0, 0, 0, 1, 0.0145466, 0.0598947, -0.0980413)
+texture = SubResource("ViewportTexture_ccnc5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j4w4p")
+}

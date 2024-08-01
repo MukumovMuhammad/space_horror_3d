@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bqao7hsxolb5t"
+path="res://.godot/imported/ammo_shotgun.obj-ffd78f98a908501e4a3ee08d5197961d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ammo_shotgun.obj-ffd78f98a908501e4a3ee08d5197961d.mesh"]
+
+source_file="res://Assets/Lvls/ModelsAndTexture/Weapons_kit/Models/ammo_shotgun.obj"
+dest_files=["res://.godot/imported/ammo_shotgun.obj-ffd78f98a908501e4a3ee08d5197961d.mesh", "res://.godot/imported/ammo_shotgun.obj-ffd78f98a908501e4a3ee08d5197961d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
