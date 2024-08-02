@@ -75,7 +75,8 @@ func _process(delta):
 		"\n lost : " + str(lost) + 
 		"\n gooing back home : " + str(going_back_home)+
 		"\n got home " + str(got_to_home) + 
-		"\n current_anim " + str(current_anim) 
+		"\n current_anim " + str(current_anim) + 
+		"\n curent target dest : " + str(snapped(global_position.distance_to(nav_agent.get_final_position()), 0.01))
 	)
 	
 	if see:
@@ -86,6 +87,13 @@ func _process(delta):
 		lost = false
 		nav_agent.set_target_position(player.global_position)
 		current_target = player.global_position
+	#elif fallowing:
+		#if global_position.distance_to(player.global_position) < 2.0:
+			#fallowing = false
+			#current_target = Wondering_poses.pick_random()
+			#nav_agent.set_target_position(current_target)
+			#going_back_home = true
+			#got_to_home = false
 	
 	dest = nav_agent.get_next_path_position()
 	var dir = (dest - global_position).normalized()
@@ -113,12 +121,15 @@ func _process(delta):
 			#print_debug("didn't catch a player")
 			#fallowing = false
 			
-	if global_position.distance_to(dest) <= 1:
-		if going_back_home:
+	if global_position.distance_to(nav_agent.get_final_position()) <= 2:
+		if going_back_home or fallowing:
 			got_to_home = true
 			going_back_home = false
+			fallowing = false
 		else:
 			lost = true
+			got_to_home = true
+			
 		if heard_sth:
 			heard_sth = false
 	
@@ -151,7 +162,8 @@ func _on_animation_tree_animation_started(anim_name: StringName) -> void:
 	#print_debug("anim name is : " + anim_name)
 	if anim_name == "screaming":
 		look_at(player.global_position)
-	elif anim_name == "idle" and got_to_home:
+	elif ["idle", "mutant_idle"].has(anim_name)  and got_to_home:
+		lost = false
 		current_target = Wondering_poses.pick_random()
 		nav_agent.set_target_position(current_target)
 		going_back_home = true

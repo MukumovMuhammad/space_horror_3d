@@ -69,6 +69,8 @@ func carrying_obj():
 
 
 func change_obj(obj):
+	#if cur_hand_obj != null:
+		#get_child(cur_hand_obj).take_away()
 	if current_obj != null:
 		var obj_pos = obj.global_transform
 		obj.global_transform = current_obj.global_transform
@@ -76,3 +78,24 @@ func change_obj(obj):
 		current_obj.global_transform = obj_pos
 	current_obj = obj
 	current_obj.took()
+
+
+func have_petrol():
+	if current_obj == null:
+		return false
+	if current_obj.obj_name == "petrol":
+		return true
+	return false
+	
+
+
+func empty_petrol_can():
+	if current_obj.obj_name != "petrol":
+		return
+		
+	var petrol_v = current_obj.petrol_volue
+	current_obj.queue_free()
+	current_obj = null
+	return petrol_v
+	
+	

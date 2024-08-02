@@ -7,7 +7,6 @@ extends RayCast3D
 @onready var movement: Node = $"../../../../movement"
 
 
-@export var current_obj : Node = null
 @onready var camera_tab: Node3D = $"../../Camera_Tab"
 @onready var camera_view: TextureRect = $"../../../../HUD/CanvasLayer/CameraTab"
 
@@ -55,6 +54,8 @@ func _process(delta: float) -> void:
 		elif obj.is_in_group("spying_spot"):
 			if Input.is_action_just_pressed("space"):
 				obj.spy(player)
+		elif obj.is_in_group("petrol_container") and hand_objs.have_petrol():
+			petrol_progress.value = obj.Fill_container(hand_objs.empty_petrol_can())
 	else:
 		info.text = ""
 
