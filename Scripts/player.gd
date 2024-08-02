@@ -80,7 +80,6 @@ func _physics_process(delta):
 		pre_cur = cur_state
 	#	print_debug("set movement state to " , cur_state)
 		emit_signal("set_movement_state", states[cur_state])
-	
 	if pre_dir != direction: # conditions for emitting signal of direction once
 		pre_dir = direction
 		#print_debug("set new direct to " , direction)
@@ -112,11 +111,3 @@ func death():
 	player_died.emit()
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	get_tree().paused = true
-
-
-func spy_corner(_spy_pos : Vector3, _spy_rot : Vector3):
-	$head/neck.look_at(_spy_pos)
-	$head/neck.rotation.y = 0
-	var direction = (head.global_basis * Vector3(0, 0, -1)).normalized()
-	emit_signal("set_direction", direction)
-	movement.start_spy(_spy_pos, _spy_rot)
