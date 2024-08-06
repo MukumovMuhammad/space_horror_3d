@@ -11,7 +11,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	translate(get_transform().basis.z.normalized() * delta * SPEED)
+	#translate(get_transform().basis.z.normalized() * delta * SPEED)
+	var dir = (global_basis * Vector3(0,0,-1)).normalized()
+	position += dir * SPEED * delta
 	if ray.is_colliding():
 		mesh.visible = false
 		particles.emitting = true

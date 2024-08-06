@@ -11,8 +11,10 @@ func press_btn():
 	if not anim.is_playing():
 		anim.play("fire")
 		var instance_bullet = bullet.instantiate()
+		#instance_bullet.transform = bullet_pos.global_transform
+		instance_bullet.rotation = bullet_pos.global_rotation
 		instance_bullet.position = bullet_pos.global_position
-		instance_bullet.rotation = bullet_pos.rotation
+		
 		Parent.get_parent().add_child(instance_bullet)
 		#instance_bullet.set_velocity(bullet_pos)
 

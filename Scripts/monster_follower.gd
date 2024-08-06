@@ -27,6 +27,8 @@ var attack : bool = false
 var lost : bool = false
 var going_back_home : bool = false
 var got_to_home : bool = true
+var dead : bool = false
+var revival : bool = false
 
 #--------anim--------#
 var current_anim
@@ -37,8 +39,15 @@ enum states {
 	FOLLOWING,
 	LOST,
 	MAD,
-	ATTACK
+	ATTACK,
+	DEATH,
+	REVIVAL
 }
+
+#----------- LIFE var -----------#
+@export var max_health : int = 100;
+var cur_health : int
+
 
 
 #This var is just for seeing how much that is mosnter printing sth or no
@@ -51,6 +60,7 @@ func _ready():
 	nav_agent.set_target_position(current_target)
 	going_back_home = true
 	got_to_home = false
+	cur_health = max_health
 
 
 func detect_sound(noise_point : Vector3):
@@ -76,7 +86,8 @@ func _process(delta):
 		"\n gooing back home : " + str(going_back_home)+
 		"\n got home " + str(got_to_home) + 
 		"\n current_anim " + str(current_anim) + 
-		"\n curent target dest : " + str(snapped(global_position.distance_to(nav_agent.get_final_position()), 0.01))
+		"\n curent target dest : " + str(snapped(global_position.distance_to(nav_agent.get_final_position()), 0.01))+
+		"\n curent health : " + str(cur_health)
 	)
 	
 	if see:
@@ -141,6 +152,14 @@ func _process(delta):
 	anim_tree.set("parameters/conditions/attack",attack)
 	anim_tree.set("parameters/conditions/got_home",got_to_home)
 	anim_tree.set("parameters/conditions/going_to_pos", going_back_home)
+	anim_tree.set("parameters/conditions/dead", dead)
+	anim_tree.set("parameters/conditions/not_dead", revival)
+	
+	if revival:
+		dead = false
+		revival = false
+		cur_health = max_health
+		set_new_target(Wondering_poses.pick_random())
 	move_and_slide()
 		
 
@@ -163,12 +182,17 @@ func _on_animation_tree_animation_started(anim_name: StringName) -> void:
 	if anim_name == "screaming":
 		look_at(player.global_position)
 	elif ["idle", "mutant_idle"].has(anim_name)  and got_to_home:
-		lost = false
-		current_target = Wondering_poses.pick_random()
-		nav_agent.set_target_position(current_target)
-		going_back_home = true
-		got_to_home = false
-		
+		set_new_target(Wondering_poses.pick_random())
+
+
+
+func set_new_target(target : Vector3):
+	lost = false
+	current_target = target
+	nav_agent.set_target_position(current_target)
+	going_back_home = true
+	got_to_home = false
+
 
 func _anim_idle_finished():
 	if lost:
@@ -177,5 +201,16 @@ func _anim_idle_finished():
 		nav_agent.set_target_position(current_target)
 		going_back_home = true
 
+func hit():
+	cur_health -= 10;
+	if cur_health <= 0:
+		dead = true
+		$death_timer.start()
 
 
+
+
+
+func _on_death_timer_timeout():
+	revival = true
+	
