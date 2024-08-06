@@ -7,7 +7,8 @@ extends Node3D
 @onready var cur_hand_obj
 enum obj {
 	CAMERA_TAB,
-	FLESHLIGHT
+	FLESHLIGHT,
+	PISTOL
 }
 
 
@@ -26,15 +27,21 @@ func _process(delta: float) -> void:
 	
 	#-- Flesh light --#
 	if Input.is_action_just_pressed("1"):
-		if cur_hand_obj == obj.FLESHLIGHT:
-			get_child(cur_hand_obj).take_away()
-			cur_hand_obj = null
-		else:
-			if cur_hand_obj != null:
-				get_child(cur_hand_obj).take_away()
-				movement.can_move = true
-			cur_hand_obj = obj.FLESHLIGHT
-			get_child(cur_hand_obj).get_obj()
+		
+		take_obj(obj.FLESHLIGHT)
+		#if cur_hand_obj == obj.FLESHLIGHT:
+			#get_child(cur_hand_obj).take_away()
+			#cur_hand_obj = null
+		#else:
+			#if cur_hand_obj != null:
+				#get_child(cur_hand_obj).take_away()
+				#movement.can_move = true
+			#cur_hand_obj = obj.FLESHLIGHT
+			#get_child(cur_hand_obj).get_obj()
+	
+	#-- Pistol --#
+	if Input.is_action_just_pressed("2"):
+		take_obj(obj.PISTOL)
 	
 	#-- Camera Tab --#
 	if Input.is_action_just_pressed("the_camera_tab"):
@@ -58,6 +65,16 @@ func _process(delta: float) -> void:
 	carrying_obj()
 
 
+func take_obj(this_obj : obj):
+	if cur_hand_obj == this_obj:
+		get_child(cur_hand_obj).take_away()
+		cur_hand_obj = null
+	else:
+		if cur_hand_obj != null:
+			get_child(cur_hand_obj).take_away()
+			movement.can_move = true
+		cur_hand_obj = this_obj
+		get_child(cur_hand_obj).get_obj()
 
 
 

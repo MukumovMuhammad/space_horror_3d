@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dxltoqt1rsb2r"]
+[gd_scene load_steps=26 format=3 uid="uid://dxltoqt1rsb2r"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_hybay"]
 [ext_resource type="Resource" uid="uid://dgscwtekjxqle" path="res://Resourse/Players_resourse/crouch.tres" id="3_ocjjb"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dlp1ydo0v3oke" path="res://Scenes/Player_Obj/flesh_light.tscn" id="10_4gev7"]
 [ext_resource type="PackedScene" uid="uid://b3eaxjmmf8qe0" path="res://Scenes/death_pause.tscn" id="10_6pgdm"]
 [ext_resource type="Texture2D" uid="uid://coi8is6sndx66" path="res://Assets/HUD/crosshair/crosshair161.png" id="11_82ty5"]
+[ext_resource type="PackedScene" uid="uid://bru3fy0dcaf5y" path="res://Scenes/Player_Obj/pistol.tscn" id="12_e2fl8"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_x85kv"]
 
@@ -153,6 +154,10 @@ transform = Transform3D(0.999988, 0, -0.004852, 0, 1, 0, 0.004852, 0, 0.999988, 
 visible = true
 
 [node name="FleshLight" parent="head/neck/hand_objs" instance=ExtResource("10_4gev7")]
+
+[node name="Pistol" parent="head/neck/hand_objs" node_paths=PackedStringArray("Parent") instance=ExtResource("12_e2fl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.741392, -0.99709, -0.865073)
+Parent = NodePath("../../../..")
 
 [node name="noise_area" type="Area3D" parent="."]
 collision_mask = 3

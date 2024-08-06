@@ -114,7 +114,7 @@ states/sound_reaction/position = Vector2(418.4, -10.8)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_mgb5a"), "idle", "sound_reaction", SubResource("AnimationNodeStateMachineTransition_27e0x"), "sound_reaction", "screaming", SubResource("AnimationNodeStateMachineTransition_7fwmi"), "sound_reaction", "mutant_walking", SubResource("AnimationNodeStateMachineTransition_lfcel"), "mutant_walking", "screaming", SubResource("AnimationNodeStateMachineTransition_ybxq7"), "screaming", "running", SubResource("AnimationNodeStateMachineTransition_thw2p"), "running", "side_attack", SubResource("AnimationNodeStateMachineTransition_ipoii"), "side_attack", "running", SubResource("AnimationNodeStateMachineTransition_yj1a3"), "mutant_walking", "mutant_idle", SubResource("AnimationNodeStateMachineTransition_qwkre"), "running", "mutant_idle", SubResource("AnimationNodeStateMachineTransition_xpbg3"), "mutant_idle", "mutant_walking", SubResource("AnimationNodeStateMachineTransition_6qdxu"), "mutant_walking", "idle", SubResource("AnimationNodeStateMachineTransition_hs56s"), "idle", "screaming", SubResource("AnimationNodeStateMachineTransition_ic8y1"), "idle", "mutant_walking", SubResource("AnimationNodeStateMachineTransition_qww6y")]
 graph_offset = Vector2(120, -202.298)
 
-[node name="Alien" type="CharacterBody3D" groups=["noise_listener"]]
+[node name="Alien" type="CharacterBody3D" groups=["enemy", "noise_listener"]]
 collision_layer = 2
 collision_mask = 3
 floor_max_angle = 1.0472
