@@ -160,9 +160,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.02
 [node name="computer-screen" parent="objs" instance=ExtResource("9_xe01o")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -37.7027, 0, -6.94654)
 
-[node name="chair-armrest2" parent="objs" instance=ExtResource("9_pt3r4")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -35.5342, 0, -6.65066)
-
 [node name="chair-armrest3" parent="objs" instance=ExtResource("9_pt3r4")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -28.1672, 0, -11.2282)
 

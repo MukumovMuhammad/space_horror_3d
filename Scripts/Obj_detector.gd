@@ -33,29 +33,38 @@ func _process(delta: float) -> void:
 			info.text = ""
 		
 		
-		##--------equipments--------##
-		if obj.is_in_group("equipment"):
-			
-			
-			
-			if Input.is_action_just_pressed("action"):
+			##-------- Action --------##
+		if Input.is_action_just_pressed("action"):
+			# ------ equipments ------ #
+			if obj.is_in_group("equipment"):
 				hand_objs.change_obj(obj.parent)
-		
+			
+			# ------ door ------ #
+			elif obj.is_in_group("e_door"):
+				obj.open_door()
+			elif obj.is_in_group("sec_cam"):
+				$"../../../../HUD/Camera_panel".open_computer()
+				movement.can_move = false
+				movement.can_rot = false
+				Input.mouse_mode = Input.MOUSE_MODE_CONFINED 
+
 		##--------equipments (pterol) --------##
 		#elif obj.is_in_group("petrol_container") and current_obj != null:
 			#if current_obj.obj_name == "petrol":
 				#petrol_progress.value = obj.Fill_container(current_obj.petrol_volue)
 				#current_obj.queue_free()
 				#current_obj = null
-		elif obj.is_in_group("e_door"):
-			info.text = "open"
-			if Input.is_action_just_pressed("action"):
-				obj.open_door()
-		elif obj.is_in_group("spying_spot"):
-			if Input.is_action_just_pressed("space"):
-				obj.spy(player)
+		#elif obj.is_in_group("e_door"):
+			#info.text = "open"
+			#if Input.is_action_just_pressed("action"):
+				#obj.open_door()
+		#elif obj.is_in_group("spying_spot"):
+			#if Input.is_action_just_pressed("space"):
+				#obj.spy(player)
 		elif obj.is_in_group("petrol_container") and hand_objs.have_petrol():
 			petrol_progress.value = obj.Fill_container(hand_objs.empty_petrol_can())
+		
+
 	else:
 		info.text = ""
 

@@ -6,6 +6,7 @@ var lerp_speed := 3.0
 @onready var dir : Vector3 = Vector3.ZERO
 @onready var Player_vel = Vector3.ZERO
 @export var can_move : bool = true
+@export var can_rot : bool = true
 var can_get_dir : bool = true # this var is used for not getting new dir from player. So as it could still move only from it's previous dir. Like in spying
 
 #fov
@@ -29,7 +30,7 @@ enum states {
 
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and can_rot:
 		head.rotate_y(deg_to_rad(-event.relative.x * sensvity))
 		neck.rotate_x(deg_to_rad(-event.relative.y * sensvity))
 		neck.rotation.x = clamp(neck.rotation.x, deg_to_rad(-80), deg_to_rad(80))

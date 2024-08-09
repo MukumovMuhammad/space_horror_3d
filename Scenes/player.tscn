@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b3eaxjmmf8qe0" path="res://Scenes/death_pause.tscn" id="10_6pgdm"]
 [ext_resource type="Texture2D" uid="uid://coi8is6sndx66" path="res://Assets/HUD/crosshair/crosshair161.png" id="11_82ty5"]
 [ext_resource type="PackedScene" uid="uid://bru3fy0dcaf5y" path="res://Scenes/Player_Obj/pistol.tscn" id="12_e2fl8"]
+[ext_resource type="PackedScene" uid="uid://do0cl3bsotx0k" path="res://Scenes/Player_Obj/camera_panel.tscn" id="16_84jvp"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_x85kv"]
 
@@ -42,8 +43,6 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_6yda6"]
 
 [sub_resource type="Animation" id="Animation_sydw8"]
 length = 0.001
@@ -257,24 +256,9 @@ grow_horizontal = 0
 grow_vertical = 0
 value = 0.31
 
-[node name="CameraTab" type="TextureRect" parent="HUD/CanvasLayer"]
+[node name="Camera_panel" parent="HUD" node_paths=PackedStringArray("player") instance=ExtResource("16_84jvp")]
 visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("ViewportTexture_6yda6")
-
-[node name="Label" type="Label" parent="HUD/CanvasLayer/CameraTab"]
-visible = false
-layout_mode = 0
-offset_left = 40.0
-offset_top = 564.0
-offset_right = 192.0
-offset_bottom = 613.0
-text = "space -  for switch
-Tab - for truning off"
+player = NodePath("../..")
 
 [node name="health_component" parent="." instance=ExtResource("6_27hf7")]
 

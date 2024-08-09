@@ -1,0 +1,316 @@
+[gd_scene load_steps=7 format=3 uid="uid://do0cl3bsotx0k"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerObjs/camera_panel.gd" id="1_xerkv"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6yda6"]
+
+[sub_resource type="Animation" id="Animation_vk5ib"]
+resource_name = "opening"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("password_edit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-500, 290), Vector2(300, 290)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("submit:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(736, 650), Vector2(736, 297)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("password_label:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1150, 223), Vector2(299, 223)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("exit:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(31, 671), Vector2(31, 551)]
+}
+
+[sub_resource type="Animation" id="Animation_fbwnv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("password_edit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(300, 290)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("submit:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(736, 650)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("password_label:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(299, -50)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("exit:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(31, 551)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("prev_btn:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-200, 272)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("next_btn:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1150, 272)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CameraTab:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cepl3"]
+resource_name = "unlocked"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("exit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(31, 676), Vector2(31, 531)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("prev_btn:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-200, 272), Vector2(18, 272)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("next_btn:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1150, 272), Vector2(971, 272)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CameraTab:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CameraTab:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6va2l"]
+_data = {
+"RESET": SubResource("Animation_fbwnv"),
+"opening": SubResource("Animation_vk5ib"),
+"unlocked": SubResource("Animation_cepl3")
+}
+
+[node name="Camera_layer" type="CanvasLayer"]
+script = ExtResource("1_xerkv")
+
+[node name="CameraTab" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_6yda6")
+
+[node name="submit" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.639
+anchor_top = 0.458
+anchor_right = 0.795
+anchor_bottom = 0.577
+offset_left = -0.128052
+offset_top = 353.216
+offset_right = 4.15997
+offset_bottom = 378.104
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Submit"
+
+[node name="Label" type="Label" parent="submit"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.861
+anchor_top = 1.156
+anchor_right = -1.006
+anchor_bottom = 2.36
+offset_left = -0.019989
+offset_top = -0.012001
+offset_right = 0.0800018
+offset_bottom = -0.010025
+theme_override_colors/font_color = Color(0.690196, 0, 0.054902, 1)
+theme_override_font_sizes/font_size = 50
+
+[node name="exit" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.027
+anchor_top = 0.819
+anchor_right = 0.183
+anchor_bottom = 0.938
+offset_left = -0.104
+offset_top = 20.288
+offset_right = 7.18399
+offset_bottom = 40.176
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "exit"
+
+[node name="password_label" type="Label" parent="."]
+offset_left = 299.0
+offset_top = -50.0
+offset_right = 802.0
+offset_bottom = 5.0
+theme_override_font_sizes/font_size = 40
+text = "Enter a security password "
+
+[node name="password_edit" type="TextEdit" parent="."]
+anchors_preset = -1
+anchor_left = 0.26
+anchor_top = 0.448
+anchor_right = 0.63
+anchor_bottom = 0.582
+offset_left = 0.47998
+offset_top = -0.304016
+offset_right = -2.76007
+offset_bottom = 13.864
+theme_override_font_sizes/font_size = 50
+text = "PASSWORD"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6va2l")
+}
+
+[node name="next_btn" type="Button" parent="."]
+offset_left = 1150.0
+offset_top = 272.0
+offset_right = 1284.0
+offset_bottom = 349.0
+theme_override_font_sizes/font_size = 40
+text = "NEXT"
+
+[node name="prev_btn" type="Button" parent="."]
+offset_left = -200.0
+offset_top = 272.0
+offset_right = -80.0
+offset_bottom = 339.0
+theme_override_font_sizes/font_size = 40
+text = "PREV"
+
+[connection signal="pressed" from="submit" to="." method="_on_submit_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="text_changed" from="password_edit" to="." method="_on_password_edit_text_changed"]

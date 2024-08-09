@@ -43,19 +43,21 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("2"):
 		take_obj(obj.PISTOL)
 	
-	#-- Camera Tab --#
-	if Input.is_action_just_pressed("the_camera_tab"):
-		if cur_hand_obj == obj.CAMERA_TAB:
-			cur_hand_obj = null
-			movement.can_move = true
-			get_child(obj.CAMERA_TAB).take_away()
-		else:
-			if cur_hand_obj != null:
-				get_child(cur_hand_obj).take_away()
-			cur_hand_obj = obj.CAMERA_TAB
-			movement.can_move = false
-			get_child(cur_hand_obj).get_obj()
-		
+	##-- Camera Tab --#
+	#if Input.is_action_just_pressed("the_camera_tab"):
+		#if cur_hand_obj == obj.CAMERA_TAB:
+			#cur_hand_obj = null
+			#movement.can_move = true
+			#get_child(obj.CAMERA_TAB).take_away()
+		#else:
+			#if cur_hand_obj != null:
+				#get_child(cur_hand_obj).take_away()
+			#cur_hand_obj = obj.CAMERA_TAB
+			#movement.can_move = false
+			#get_child(cur_hand_obj).get_obj()
+		#
+
+
 	
 	if Input.is_action_just_pressed("left_click"):
 		if cur_hand_obj == null:
