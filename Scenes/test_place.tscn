@@ -82,7 +82,7 @@ size = Vector3(300, 1, 300)
 
 [node name="Player" parent="NavigationRegion3D" instance=ExtResource("2_f5gfo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.702474, 2.07548, 64.4137)
-Camera_Subs = [NodePath("../../Security_Cameras/SubViewport"), NodePath("../../Security_Cameras/SubViewport2"), NodePath("../../Security_Cameras/SubViewport3"), NodePath("../Alien/SubViewport")]
+Camera_Subs = [NodePath("../Alien/SubViewport"), NodePath("../../Security_Cameras/SubViewport2"), NodePath("../../Security_Cameras/SubViewport3"), NodePath("../Alien/SubViewport")]
 
 [node name="HUD_for_enemies" parent="NavigationRegion3D/Player" instance=ExtResource("3_e8hoh")]
 

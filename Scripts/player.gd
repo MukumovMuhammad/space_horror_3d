@@ -111,3 +111,10 @@ func death():
 	player_died.emit()
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	get_tree().paused = true
+
+
+func default_movement():
+	movement.can_move = true
+	movement.can_rot = true
+	$head/neck/hand_objs.set_process(true)
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

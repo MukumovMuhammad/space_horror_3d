@@ -1,60 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://do0cl3bsotx0k"]
+[gd_scene load_steps=8 format=3 uid="uid://do0cl3bsotx0k"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerObjs/camera_panel.gd" id="1_xerkv"]
+[ext_resource type="Texture2D" uid="uid://cpsvroj6yorkn" path="res://Assets/Lvls/ModelsAndTexture/textures/windows_screen_shot.png" id="2_k4lhl"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_6yda6"]
-
-[sub_resource type="Animation" id="Animation_vk5ib"]
-resource_name = "opening"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("password_edit:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-500, 290), Vector2(300, 290)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("submit:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(736, 650), Vector2(736, 297)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("password_label:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1150, 223), Vector2(299, 223)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("exit:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(31, 671), Vector2(31, 551)]
-}
+[sub_resource type="ViewportTexture" id="ViewportTexture_52uax"]
 
 [sub_resource type="Animation" id="Animation_fbwnv"]
 length = 0.001
@@ -142,6 +91,130 @@ tracks/6/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("exit:size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(205, 103)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("password_edit:size")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(432, 113)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("submit:size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(207, 115)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TextureRect:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vk5ib"]
+resource_name = "opening"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("password_edit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-500, 290), Vector2(300, 290)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("submit:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(736, 650), Vector2(736, 297)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("password_label:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1150, 223), Vector2(299, 223)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("exit:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(31, 671), Vector2(31, 551)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("submit/Label:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
 
 [sub_resource type="Animation" id="Animation_cepl3"]
 resource_name = "unlocked"
@@ -206,6 +279,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextureRect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6va2l"]
 _data = {
@@ -223,7 +308,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("ViewportTexture_6yda6")
+texture = SubResource("ViewportTexture_52uax")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = -216.0
+offset_right = 384.0
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_k4lhl")
+expand_mode = 2
 
 [node name="submit" type="Button" parent="."]
 anchors_preset = -1
@@ -231,10 +329,10 @@ anchor_left = 0.639
 anchor_top = 0.458
 anchor_right = 0.795
 anchor_bottom = 0.577
-offset_left = -0.128052
+offset_left = -0.127991
 offset_top = 353.216
-offset_right = 4.15997
-offset_bottom = 378.104
+offset_right = 27.16
+offset_bottom = 391.104
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
@@ -262,8 +360,8 @@ anchor_right = 0.183
 anchor_bottom = 0.938
 offset_left = -0.104
 offset_top = 20.288
-offset_right = 7.18399
-offset_bottom = 40.176
+offset_right = 25.184
+offset_bottom = 46.176
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
@@ -283,10 +381,10 @@ anchor_left = 0.26
 anchor_top = 0.448
 anchor_right = 0.63
 anchor_bottom = 0.582
-offset_left = 0.47998
+offset_left = 0.480011
 offset_top = -0.304016
-offset_right = -2.76007
-offset_bottom = 13.864
+offset_right = 6.23999
+offset_bottom = 25.864
 theme_override_font_sizes/font_size = 50
 text = "PASSWORD"
 
@@ -294,6 +392,7 @@ text = "PASSWORD"
 libraries = {
 "": SubResource("AnimationLibrary_6va2l")
 }
+autoplay = "RESET"
 
 [node name="next_btn" type="Button" parent="."]
 offset_left = 1150.0
@@ -314,3 +413,5 @@ text = "PREV"
 [connection signal="pressed" from="submit" to="." method="_on_submit_pressed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
 [connection signal="text_changed" from="password_edit" to="." method="_on_password_edit_text_changed"]
+[connection signal="pressed" from="next_btn" to="." method="_on_next_btn_pressed"]
+[connection signal="pressed" from="prev_btn" to="." method="_on_prev_btn_pressed"]

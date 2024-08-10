@@ -46,7 +46,8 @@ func _process(delta: float) -> void:
 				$"../../../../HUD/Camera_panel".open_computer()
 				movement.can_move = false
 				movement.can_rot = false
-				Input.mouse_mode = Input.MOUSE_MODE_CONFINED 
+				Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+				hand_objs.set_process(false)
 
 		##--------equipments (pterol) --------##
 		#elif obj.is_in_group("petrol_container") and current_obj != null:
