@@ -3,9 +3,13 @@ extends CanvasLayer
 @onready var password_edit: TextEdit = $password_edit
 @onready var anim : AnimationPlayer = $AnimationPlayer
 @onready var camera_tab: TextureRect = $CameraTab
+
 @export var player: CharacterBody3D
 var password_is_unlocked : bool
-var cur_camera : int = 0
+
+
+var cur_camera : int = 0 # for indicating curent camera
+
 
 func _ready() -> void:
 	camera_tab.visible = false
