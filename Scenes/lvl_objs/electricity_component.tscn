@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://n6h22x1bijry"]
+
+[ext_resource type="Script" path="res://Scripts/lvl_objs/electricities/electricity_component.gd" id="1_pgcth"]
+
+[node name="e_component" type="Node"]
+script = ExtResource("1_pgcth")

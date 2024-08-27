@@ -11,14 +11,16 @@ var on : bool = false
 func press_btn():
 	on = !on
 	if on:
-		the_light.show()
+		the_light.set_process(true)
+		#the_light.show()
 	else:
-		the_light.hide()
+		the_light.set_process(false)
+		#the_light.hide()
 
 
 func get_obj():
 	animation_player.play("get_obj")
-	the_light.hide()
+	the_light.show()
 
 
 func take_away():

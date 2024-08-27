@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c70m47g4aug2g"]
+
+[ext_resource type="PackedScene" uid="uid://n6h22x1bijry" path="res://Scenes/lvl_objs/electricity_component.tscn" id="1_7m1h8"]
+[ext_resource type="Script" path="res://Scripts/lvl_objs/light.gd" id="1_ijsb3"]
+
+[node name="e_light" type="OmniLight3D" groups=["electrical"]]
+script = ExtResource("1_ijsb3")
+
+[node name="e_component" parent="." instance=ExtResource("1_7m1h8")]
+
+[connection signal="set_electricity" from="e_component" to="." method="_on_e_component_set_electricity"]

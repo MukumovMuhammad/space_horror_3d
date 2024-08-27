@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnafkeys75spd"]
+
+[ext_resource type="Script" path="res://Scripts/lvl_objs/electricities/electricity_box.gd" id="1_p2dci"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bcgf3"]
+size = Vector3(1, 1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a2krr"]
+size = Vector3(1, 1, 0.5)
+
+[node name="e_box" type="StaticBody3D" groups=["ebox", "has_info"]]
+collision_layer = 2
+script = ExtResource("1_p2dci")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_bcgf3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_a2krr")

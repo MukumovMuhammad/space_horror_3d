@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://w8r0244tbtxb"]
+[gd_scene load_steps=15 format=3 uid="uid://w8r0244tbtxb"]
 
 [ext_resource type="Texture2D" uid="uid://cywnaw3gkm5wa" path="res://Assets/Lvls/ModelsAndTexture/space_station_kit/Textures/colormap.png" id="1_yk25q"]
 [ext_resource type="Script" path="res://Scripts/lvl_objs/e_door.gd" id="2_reseo"]
+[ext_resource type="PackedScene" uid="uid://n6h22x1bijry" path="res://Scenes/lvl_objs/electricity_component.tscn" id="3_1eexk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2pb8"]
 resource_name = "colormap"
@@ -143,7 +144,7 @@ _data = {
 "open": SubResource("Animation_edvn2")
 }
 
-[node name="wall-door-banner2" type="StaticBody3D"]
+[node name="wall-door-banner2" type="StaticBody3D" groups=["electrical"]]
 
 [node name="wall-door-banner" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_eqm6t")
@@ -189,3 +190,7 @@ shape = SubResource("BoxShape3D_vpopa")
 libraries = {
 "": SubResource("AnimationLibrary_gxm7k")
 }
+
+[node name="e_component" parent="." instance=ExtResource("3_1eexk")]
+
+[connection signal="set_electricity" from="e_component" to="door" method="_on_e_component_set_electricity"]

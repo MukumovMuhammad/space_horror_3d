@@ -1,19 +1,21 @@
-[gd_scene load_steps=18 format=3 uid="uid://cmifls3uhdw3q"]
+[gd_scene load_steps=20 format=3 uid="uid://cmifls3uhdw3q"]
 
 [ext_resource type="PackedScene" uid="uid://djkh15dpcudhw" path="res://Assets/Lvls/ModelsAndTexture/space_station_kit/floor.glb" id="1_gqjjg"]
 [ext_resource type="PackedScene" uid="uid://dhuf66rboeyfe" path="res://Assets/Lvls/objs/wall.tscn" id="2_bhcwk"]
 [ext_resource type="PackedScene" uid="uid://w8r0244tbtxb" path="res://Assets/Lvls/objs/wall_door_banner_2.tscn" id="3_h87o2"]
 [ext_resource type="PackedScene" uid="uid://cr7lvsm4u7gp0" path="res://Assets/Lvls/ModelsAndTexture/space_station_kit/computer-system.glb" id="5_rl1hn"]
 [ext_resource type="PackedScene" uid="uid://ccuy7v26vdfk3" path="res://Assets/Lvls/ModelsAndTexture/space_station_kit/display-wall-wide.glb" id="8_ap2yg"]
+[ext_resource type="PackedScene" uid="uid://be8534yaastqx" path="res://Scenes/lvl_objs/spaceship.tscn" id="9_hg272"]
 [ext_resource type="PackedScene" uid="uid://c1qgoi2yi51de" path="res://Assets/Lvls/objs/table_ship_display.tscn" id="9_jer1a"]
 [ext_resource type="PackedScene" uid="uid://dkjqivr2m4bnm" path="res://Assets/Lvls/objs/chair_armrest.tscn" id="9_pt3r4"]
 [ext_resource type="PackedScene" uid="uid://cawwth5jeov7x" path="res://Assets/Lvls/objs/computer_screen.tscn" id="9_xe01o"]
 [ext_resource type="PackedScene" uid="uid://c8rn2fhamj7of" path="res://Assets/Lvls/objs/table_planet_display.tscn" id="9_yohhl"]
 [ext_resource type="PackedScene" uid="uid://bye8j8acegjty" path="res://Assets/Lvls/objs/computer_monitor_display.tscn" id="10_kysh6"]
-[ext_resource type="PackedScene" uid="uid://be8534yaastqx" path="res://Scenes/spaceship.tscn" id="11_yl5wm"]
+[ext_resource type="PackedScene" uid="uid://c70m47g4aug2g" path="res://Scenes/lvl_objs/light.tscn" id="11_1k0r7"]
 [ext_resource type="PackedScene" uid="uid://b1sn3kxj41ckl" path="res://Assets/Lvls/ModelsAndTexture/space_station_kit/container.glb" id="12_b055i"]
 [ext_resource type="PackedScene" uid="uid://df153h5gkvprm" path="res://Assets/Lvls/ModelsAndTexture/space_station_kit/container-flat.glb" id="13_k5dsi"]
 [ext_resource type="PackedScene" uid="uid://8scp7o3dbte" path="res://Assets/Lvls/ModelsAndTexture/space_station_kit/container-tall.glb" id="14_hunnb"]
+[ext_resource type="PackedScene" uid="uid://cnafkeys75spd" path="res://Scenes/lvl_objs/electricity_box.tscn" id="15_cvrio"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_o0e2r"]
 size = Vector3(12, 4, 0.5)
@@ -48,19 +50,10 @@ shape = SubResource("BoxShape3D_iqvy7")
 
 [node name="Light" type="Node3D" parent="."]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Light"]
-transform = Transform3D(1, 0, 0, 0, -0.999704, 0.02431, 0, -0.02431, -0.999704, -27.9135, 1.22191, 5.56489)
-omni_range = 11.9067
-
 [node name="OmniLight3D5" type="OmniLight3D" parent="Light"]
 transform = Transform3D(1, 0, 0, 0, -0.999704, 0.02431, 0, -0.02431, -0.999704, 4.12957, 1.43369, 7.79044)
 light_volumetric_fog_energy = 3.148
 omni_range = 10.0139
-
-[node name="OmniLight3D10" type="OmniLight3D" parent="Light"]
-transform = Transform3D(1, 0, 0, 0, -0.999704, 0.02431, 0, -0.02431, -0.999704, -10.2229, 1.8186, 6.35114)
-light_volumetric_fog_energy = 3.148
-omni_range = 9.80493
 
 [node name="OmniLight3D8" type="OmniLight3D" parent="Light"]
 transform = Transform3D(1, 0, 0, 0, -0.999704, 0.02431, 0, -0.02431, -0.999704, -5.75939, 1.13312, -4.1822)
@@ -73,10 +66,6 @@ omni_range = 12.4891
 [node name="OmniLight3D13" type="OmniLight3D" parent="Light"]
 transform = Transform3D(1, 0, 0, 0, -0.999704, 0.02431, 0, -0.02431, -0.999704, 17.885, 1.51734, 7.70887)
 omni_range = 12.4891
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="Light"]
-transform = Transform3D(1, 0, 0, 0, -0.999704, 0.02431, 0, -0.02431, -0.999704, -25.5573, 2.17408, -7.9996)
-omni_range = 11.2216
 
 [node name="OmniLight3D11" type="OmniLight3D" parent="Light"]
 transform = Transform3D(1, 0, 0, 0, -0.999704, 0.02431, 0, -0.02431, -0.999704, 29.1311, 2.00627, -7.42295)
@@ -142,9 +131,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.945
 
 [node name="objs" type="Node3D" parent="."]
 
-[node name="wall-door-banner2" parent="objs" instance=ExtResource("3_h87o2")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.886, -0.1, 14)
-
 [node name="wall-door-banner3" parent="objs" instance=ExtResource("3_h87o2")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 21.8439, -0.1, 14)
 
@@ -166,9 +152,31 @@ transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -28.1672, 0, -11.2282)
 [node name="computer-monitor_display" parent="objs" instance=ExtResource("10_kysh6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.42115, 0, -13.2365)
 
-[node name="spaceship" parent="objs" node_paths=PackedStringArray("display") instance=ExtResource("11_yl5wm")]
+[node name="spaceship" parent="objs" node_paths=PackedStringArray("display") instance=ExtResource("9_hg272")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.771, 0.554901, -11.2176)
 display = NodePath("../computer-monitor_display")
+
+[node name="e_box" parent="objs" instance=ExtResource("15_cvrio")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.253, 1.77785, -0.514919)
+
+[node name="SpotLight3D" parent="objs/e_box" instance=ExtResource("11_1k0r7")]
+transform = Transform3D(0.965926, -0.258819, 3.09086e-08, -4.37114e-08, -4.37114e-08, 1, -0.258819, -0.965926, -5.35353e-08, 7.09713, 0.441546, -6.38485)
+light_indirect_energy = 3.0
+light_volumetric_fog_energy = 4.0
+omni_range = 14.9556
+
+[node name="SpotLight3D2" parent="objs/e_box" instance=ExtResource("11_1k0r7")]
+transform = Transform3D(0.965926, -0.258819, 3.09086e-08, -4.37114e-08, -4.37114e-08, 1, -0.258819, -0.965926, -5.35353e-08, 8.92474, 0.0323436, 3.99992)
+light_volumetric_fog_energy = 6.818
+omni_range = 12.7434
+
+[node name="SpotLight3D3" parent="objs/e_box" instance=ExtResource("11_1k0r7")]
+transform = Transform3D(0.965926, -0.258819, 3.09086e-08, -4.37114e-08, -4.37114e-08, 1, -0.258819, -0.965926, -5.35353e-08, -5.28867, -0.59311, 2.20242)
+light_volumetric_fog_energy = 6.818
+omni_range = 12.7434
+
+[node name="wall-door-banner2" parent="objs/e_box" instance=ExtResource("3_h87o2")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, -14.5149, -1.87785, 1.36699)
 
 [node name="computer-system2" parent="." instance=ExtResource("5_rl1hn")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -27.8846, 0, -13.5872)

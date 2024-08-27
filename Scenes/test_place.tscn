@@ -86,9 +86,6 @@ Camera_Subs = [NodePath("../Alien/SubViewport"), NodePath("../../Security_Camera
 
 [node name="HUD_for_enemies" parent="NavigationRegion3D/Player" instance=ExtResource("3_e8hoh")]
 
-[node name="CanvasLayer" parent="NavigationRegion3D/Player/HUD_for_enemies" index="0"]
-visible = true
-
 [node name="TextureRect" type="TextureRect" parent="NavigationRegion3D/Player/HUD_for_enemies/CanvasLayer" index="0"]
 offset_left = 857.0
 offset_top = 24.0

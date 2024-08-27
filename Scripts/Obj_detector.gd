@@ -48,6 +48,8 @@ func _process(delta: float) -> void:
 				movement.can_rot = false
 				Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 				hand_objs.set_process(false)
+			elif obj.is_in_group("ebox"):
+				obj.switch_ebox()
 
 		##--------equipments (pterol) --------##
 		#elif obj.is_in_group("petrol_container") and current_obj != null:
